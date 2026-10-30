@@ -13,16 +13,16 @@ Pairs with [`icedq-tools/generate-mapping-action`](https://github.com/marketplac
 
 - uses: icedq-tools/export-action@v1
   with:
-    icedq-url:     ${{ secrets.ICEDQ_URL }}
-    keycloak-url:  ${{ secrets.ICEDQ_KEYCLOAK_URL }}
-    client-id:     ${{ secrets.ICEDQ_CLIENT_ID }}
-    client-secret: ${{ secrets.ICEDQ_CLIENT_SECRET }}
-    org-id:        ${{ secrets.ICEDQ_ORG_ID }}
-    account-id:    ${{ secrets.ICEDQ_ACCOUNT_ID }}
-    workspace-id:  ${{ vars.DEV_WORKSPACE_ID }}
-    resource:      workflow
-    id:            wkfl-abc123
-    output-file:   ./exports/finance.zip
+    icedq-base-url: ${{ vars.ICEDQ_BASE_URL }}
+    keycloak-url:   ${{ vars.ICEDQ_KEYCLOAK_URL }}
+    client-id:      ${{ secrets.ICEDQ_CLIENT_ID }}
+    client-secret:  ${{ secrets.ICEDQ_CLIENT_SECRET }}
+    org-id:         ${{ vars.ICEDQ_ORG_ID }}
+    account-id:     ${{ vars.ICEDQ_ACCOUNT_ID }}
+    workspace-id:   ${{ vars.ICEDQ_WORKSPACE_ID }}
+    resource:       workflow
+    id:             wkfl-abc123
+    output-file:    ./exports/finance.zip
 ```
 
 ### Export a folder recursively
@@ -69,7 +69,7 @@ jobs:
 
 | Input | Required | Default | Description |
 |---|---|---|---|
-| `icedq-url` | yes | — | iceDQ instance base URL |
+| `icedq-base-url` | yes | — | iceDQ instance base URL |
 | `keycloak-url` | yes | — | Keycloak token endpoint base |
 | `client-id` | yes | — | OAuth client ID |
 | `client-secret` | yes | — | OAuth client secret |
@@ -109,5 +109,4 @@ For iceDQ instances on private networks, set `runs-on: [self-hosted, icedq]` (or
 ## Related tools
 
 - [`icedq-tools/cli`](https://www.npmjs.com/package/@icedq/cli) — the CLI this Action wraps
-- [`icedq-tools/generate-mapping-action`](https://github.com/marketplace/actions/icedq-generate-mapping) — generates the mapping file this Action consumes
 - [`icedq-tools/import-action`](https://github.com/marketplace/actions/icedq-import) — companion import Action
